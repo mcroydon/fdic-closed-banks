@@ -10,7 +10,7 @@ const Pagination = ({ banksPerPage, totalBanks, paginate }) => {
   return (
     <nav>
         {pageNumbers.map((number) => (
-            <button onClick={() => paginate(number)}>{number}</button>
+            <button key={number.id} onClick={() => paginate(number)}>{number}</button>
         ))}
     </nav>
   );
