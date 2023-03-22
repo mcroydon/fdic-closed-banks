@@ -26,7 +26,7 @@ export default function Home({ banks }) {
       <h1 style={{ fontSize: '72px', textAlign: 'center' }}>It has been {daysSinceClosing} days since the FDIC closed a bank.</h1>
       <BankTable banks={banks} currentPage={currentPage} banksPerPage={banksPerPage} />
       <Pagination banksPerPage={banksPerPage} totalBanks={banks.length} paginate={paginate} />
-      <text><a href="https://www.fdic.gov/bank/historical/bank/bfb-data.csv">Data</a> provided by the <a href="https://www.fdic.gov">FDIC</a>.</text>
+      <text><a href="https://www.fdic.gov/bank/historical/bank/bfb-data.csv">Data</a> provided by the <a href="https://www.fdic.gov">FDIC</a>. <a href="https://github.com/mcroydon/fdic-closed-banks">Open Source code</a> is MIT-licensed. Hosted by <a href="https://vercel.com">Vercel</a>.</text>
     </div>
   );
 }
