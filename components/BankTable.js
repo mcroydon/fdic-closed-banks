@@ -1,4 +1,13 @@
 import React from 'react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@mui/material';
 
 const BankTable = ({ banks, currentPage, banksPerPage }) => {
   const indexOfLastBank = currentPage * banksPerPage;
@@ -6,24 +15,26 @@ const BankTable = ({ banks, currentPage, banksPerPage }) => {
   const currentBanks = banks.slice(indexOfFirstBank, indexOfLastBank);
 
   return (
-    <table style={{ borderCollapse: 'collapse', width: '100%' }}>
-      <thead>
-        <tr>
-          <th style={{ borderBottom: '1px solid', padding: '8px' }}>Bank</th>
-          <th style={{ borderBottom: '1px solid', padding: '8px' }}>Closing</th>
-          <th style={{ borderBottom: '1px solid', padding: '8px' }}>Transaction</th>
-        </tr>
-      </thead>
-      <tbody>
-        {currentBanks.map((bank) => (
-          <tr key={bank['CERT']} style={{ borderBottom: '1px solid' }}>
-            <td style={{ padding: '8px' }}>{bank['Bank Name, City, State']}</td>
-            <td style={{ padding: '8px' }}>{bank['Closing Date']}</td>
-            <td style={{ padding: '8px' }}>{bank['Acquirer & Transaction']}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell style={{ width: '20%' }}>Bank</TableCell>
+            <TableCell style={{ width: '10%' }}>Closing</TableCell>
+            <TableCell style={{ width: '70%' }}>Transaction</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {currentBanks.map((bank) => (
+            <TableRow key={bank['CERT']}>
+              <TableCell>{bank['Bank Name, City, State']}</TableCell>
+              <TableCell>{bank['Closing Date']}</TableCell>
+              <TableCell>{bank['Acquirer & Transaction']}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 

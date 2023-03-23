@@ -1,18 +1,18 @@
 import React from 'react';
+import TablePagination from '@mui/material/TablePagination';
 
-const Pagination = ({ banksPerPage, totalBanks, paginate }) => {
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(totalBanks / banksPerPage); i++) {
-    pageNumbers.push(i);
-  }
+const Pagination = ({ banksPerPage, totalBanks, handlePageChange, handleRowsPerPageChange }) => {
 
   return (
-    <nav>
-        {pageNumbers.map((number) => (
-            <button key={number.id} onClick={() => paginate(number)}>{number}</button>
-        ))}
-    </nav>
+    <TablePagination
+      component="div"
+      count={totalBanks}
+      rowsPerPage={banksPerPage}
+      page={handlePageChange.page - 1}
+      onPageChange={(event, newPage) => handlePageChange.handlePageChange(newPage + 1)}
+      onRowsPerPageChange={(event) => handleRowsPerPageChange(parseInt(event.target.value, 10))}
+      rowsPerPageOptions={[10, 50, 100]}
+    />
   );
 };
 
