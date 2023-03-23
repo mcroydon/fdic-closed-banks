@@ -41,7 +41,7 @@ const App = ({ banks }) => {
         handlePageChange={{ page: currentPage, handlePageChange }}
         handleRowsPerPageChange={handleRowsPerPageChange}
       />
-      <text><a href="https://www.fdic.gov/bank/historical/bank/bfb-data.csv">Data</a> provided by the <a href="https://www.fdic.gov">FDIC</a>.</text>
+      <text><a href="https://www.fdic.gov/bank/historical/bank/bfb-data.csv">Data</a> provided by the <a href="https://www.fdic.gov">FDIC</a>. <a href="https://github.com/mcroydon/fdic-closed-banks">Open Source code</a> is MIT-licensed. Hosted by <a href="https://vercel.com">Vercel</a>.</text>
     </div>
   );
 };
