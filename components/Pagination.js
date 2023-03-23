@@ -1,19 +1,17 @@
 import React from 'react';
+import Pagination from '@mui/material/Pagination';
 
-const Pagination = ({ banksPerPage, totalBanks, paginate }) => {
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(totalBanks / banksPerPage); i++) {
-    pageNumbers.push(i);
-  }
+const Paginate = ({ banksPerPage, totalBanks, handlePageChange }) => {
+  const pageCount = Math.ceil(totalBanks / banksPerPage);
 
   return (
-    <nav>
-        {pageNumbers.map((number) => (
-            <button key={number.id} onClick={() => paginate(number)}>{number}</button>
-        ))}
-    </nav>
+    <Pagination
+      count={pageCount}
+      onChange={(event, page) => handlePageChange(page)}
+      variant="outlined"
+      shape="rounded"
+    />
   );
 };
 
-export default Pagination;
+export default Paginate;
