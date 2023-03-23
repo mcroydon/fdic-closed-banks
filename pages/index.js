@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DateTime } from 'luxon';
 import { fetchData } from '../lib/utils';
 import BankTable from '../components/BankTable';
-import Paginate from '../components/Pagination';
+import Pagination from '../components/Pagination';
 
 export async function getStaticProps() {
   const banks = await fetchData();
@@ -13,9 +13,9 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ banks }) {
+const App = ({ banks }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const banksPerPage = 10;
+  const [banksPerPage, setBanksPerPage] = useState(10);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -26,11 +26,23 @@ export default function Home({ banks }) {
     setCurrentPage(page);
   };
 
+  const handleRowsPerPageChange = (rowsPerPage) => {
+    setBanksPerPage(rowsPerPage);
+    setCurrentPage(1);
+  };
+
   return (
     <div>
       <h1 style={{ fontSize: '72px', textAlign: 'center' }}>It has been {daysSinceClosing} days since the FDIC closed a bank.</h1>
       <BankTable banks={banks} currentPage={currentPage} banksPerPage={banksPerPage} />
-      <Paginate banksPerPage={banksPerPage} totalBanks={banks.length} handlePageChange={handlePageChange} />
+      <Pagination
+        banksPerPage={banksPerPage}
+        totalBanks={banks.length}
+        handlePageChange={{ page: currentPage, handlePageChange }}
+        handleRowsPerPageChange={handleRowsPerPageChange}
+      />
     </div>
   );
 };
+
+export default App;
