@@ -41,6 +41,7 @@ const App = ({ banks }) => {
         handlePageChange={{ page: currentPage, handlePageChange }}
         handleRowsPerPageChange={handleRowsPerPageChange}
       />
+      <text><a href="https://www.fdic.gov/bank/historical/bank/bfb-data.csv">Data</a> provided by the <a href="https://www.fdic.gov">FDIC</a>.</text>
     </div>
   );
 };
