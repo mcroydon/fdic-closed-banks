@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { DateTime } from 'luxon';
 import { fetchData } from '../lib/utils';
 import BankTable from '../components/BankTable';
 import Pagination from '../components/Pagination';
@@ -18,7 +19,7 @@ export default function Home({ banks }) {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const mostRecentClosing = new Date(banks[0]['Closing Date']);
+  const mostRecentClosing = DateTime.fromFormat(banks[0]['Closing Date'], 'dd-LLL-yy').toJSDate();
   const daysSinceClosing = Math.floor((new Date() - mostRecentClosing) / (1000 * 60 * 60 * 24));
 
   return (
