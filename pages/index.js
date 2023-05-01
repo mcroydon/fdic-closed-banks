@@ -19,8 +19,8 @@ const App = ({ banks }) => {
   const [banksPerPage, setBanksPerPage] = useState(10);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const mostRecentClosing = DateTime.fromFormat(banks[0]['Closing Date'], 'dd-LLL-yy').toJSDate();
+  console.log('banks', banks);
+  const mostRecentClosing = DateTime.fromFormat(banks[0]['Closing Date�'], 'd-LLL-yy').toJSDate();
   const daysSinceClosing = Math.floor((new Date() - mostRecentClosing) / (1000 * 60 * 60 * 24));
 
   const handlePageChange = (page) => {

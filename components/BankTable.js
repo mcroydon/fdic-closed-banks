@@ -19,17 +19,17 @@ const BankTable = ({ banks, currentPage, banksPerPage }) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell style={{ width: '20%' }}>Bank</TableCell>
-            <TableCell style={{ width: '10%' }}>Closing</TableCell>
-            <TableCell style={{ width: '70%' }}>Acquiring Institution</TableCell>
+            <TableCell style={{ width: '40%' }}>Bank</TableCell>
+            <TableCell style={{ width: '40%' }}>Closing</TableCell>
+            <TableCell style={{ width: '60%' }}>Acquiring Institution</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {currentBanks.map((bank) => (
             <TableRow key={bank['CERT']}>
-              <TableCell>{bank['Bank Name ']} {bank['City ']}, {bank['State ']}</TableCell>
-              <TableCell>{bank['Closing Date ']}</TableCell>
-              <TableCell>{bank['Acquiring Institution ']}</TableCell>
+              <TableCell>{bank['Bank Name�']} {bank['City�']}, {bank['State�']}</TableCell>
+              <TableCell>{bank['Closing Date�']}</TableCell>
+              <TableCell>{bank['Acquiring Institution�'].replace('�', ' ')}</TableCell>
             </TableRow>
           ))}
         </TableBody>
