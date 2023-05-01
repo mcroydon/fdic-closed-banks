@@ -3,6 +3,7 @@ import { DateTime } from 'luxon';
 import { fetchData } from '../lib/utils';
 import BankTable from '../components/BankTable';
 import Pagination from '../components/Pagination';
+// import '@/styles/Home.module.css'
 
 export async function getStaticProps() {
   const banks = await fetchData();
@@ -18,8 +19,8 @@ const App = ({ banks }) => {
   const [banksPerPage, setBanksPerPage] = useState(10);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const mostRecentClosing = DateTime.fromFormat(banks[0]['Closing Date'], 'dd-LLL-yy').toJSDate();
+  console.log('banks', banks);
+  const mostRecentClosing = DateTime.fromFormat(banks[0]['Closing Date�'], 'd-LLL-yy').toJSDate();
   const daysSinceClosing = Math.floor((new Date() - mostRecentClosing) / (1000 * 60 * 60 * 24));
 
   const handlePageChange = (page) => {
@@ -41,7 +42,7 @@ const App = ({ banks }) => {
         handlePageChange={{ page: currentPage, handlePageChange }}
         handleRowsPerPageChange={handleRowsPerPageChange}
       />
-      <text><a href="https://www.fdic.gov/bank/historical/bank/bfb-data.csv">Data</a> provided by the <a href="https://www.fdic.gov">FDIC</a>. <a href="https://github.com/mcroydon/fdic-closed-banks">Open Source code</a> is MIT-licensed. Hosted by <a href="https://vercel.com">Vercel</a>.</text>
+      <text><a href="https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list/banklist.csv">Data</a> provided by the <a href="https://www.fdic.gov">FDIC</a>. <a href="https://github.com/mcroydon/fdic-closed-banks">Open Source code</a> is MIT-licensed. Hosted by <a href="https://vercel.com">Vercel</a>.</text>
     </div>
   );
 };
