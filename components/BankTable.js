@@ -27,7 +27,7 @@ const BankTable = ({ banks, currentPage, banksPerPage }) => {
         </TableHead>
         <TableBody>
           {currentBanks.map((bank) => (
-            <TableRow key={bank['CERT']}>
+            <TableRow key={bank['Bank Name�'] + '-' + bank['CERT'] + '-' + bank['Acquiring Institution�'].replace('�', ' ')}>
               <TableCell>{bank['Bank Name�']} {bank['City�']}, {bank['State�']}</TableCell>
               <TableCell>{DateTime.fromFormat(bank['Closing Date�'], 'd-LLL-yy').toJSDate().toLocaleDateString()}</TableCell>
               <TableCell>{bank['Acquiring Institution�'].replace('�', ' ')}</TableCell>
