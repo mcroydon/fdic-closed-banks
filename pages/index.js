@@ -5,7 +5,7 @@ import BankTable from '../components/BankTable';
 import Pagination from '../components/Pagination';
 // import '@/styles/Home.module.css'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const banks = await fetchData();
   return {
     props: {
