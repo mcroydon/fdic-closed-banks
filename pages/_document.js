@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <title>Closing Banks</title>
+        <meta name="description" content="Tracking how long it has been since the FDIC closed a bank and listing them out for you to learn more."/>
       </Head>
       <body>
         <Main />
