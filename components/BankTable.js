@@ -1,4 +1,5 @@
 import React from 'react';
+import { DateTime } from 'luxon';
 import {
   Table,
   TableBody,
@@ -28,7 +29,7 @@ const BankTable = ({ banks, currentPage, banksPerPage }) => {
           {currentBanks.map((bank) => (
             <TableRow key={bank['CERT']}>
               <TableCell>{bank['Bank Name�']} {bank['City�']}, {bank['State�']}</TableCell>
-              <TableCell>{bank['Closing Date�']}</TableCell>
+              <TableCell>{DateTime.fromFormat(bank['Closing Date�'], 'd-LLL-yy').toJSDate().toLocaleDateString()}</TableCell>
               <TableCell>{bank['Acquiring Institution�'].replace('�', ' ')}</TableCell>
             </TableRow>
           ))}
