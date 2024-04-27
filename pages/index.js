@@ -34,7 +34,7 @@ const App = ({ banks }) => {
 
   return (
     <div>
-      <h1 style={{ fontSize: '72px', textAlign: 'center' }}>It has been {daysSinceClosing} days since the FDIC closed a bank.</h1>
+      <h1 style={{ fontSize: '72px', textAlign: 'center' }}>It has been {daysSinceClosing} {daysSinceClosing == 1 ? 'day' : 'days'} since the FDIC closed a bank.</h1>
       <BankTable banks={banks} currentPage={currentPage} banksPerPage={banksPerPage} />
       <Pagination
         banksPerPage={banksPerPage}
